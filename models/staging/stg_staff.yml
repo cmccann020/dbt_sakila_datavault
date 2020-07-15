@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_staff
+    description: "This is the staging model for the staff table. It will perform tests and rename columns"
+    columns:
+      - name: staff_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: staff_hash_key
+        description: "This is the computed hash key based on the source column FIRSTNAME and LASTNAME"
+        tests:
+          - not_null
+          - unique

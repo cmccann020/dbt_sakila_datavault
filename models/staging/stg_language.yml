@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_language
+    description: "This is the staging model for the language table. It will perform tests and rename columns"
+    columns:
+      - name: language_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: language_name
+        description: "This is the language name"
+        tests:
+          - not_null
+      - name: language_hash_key
+        description: "This is the computed hash key based on the source column NAME"
+        tests:
+          - not_null
+          - unique
+

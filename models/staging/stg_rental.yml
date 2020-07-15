@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_rental
+    description: "This is the staging model for the rental table. It will perform tests and rename columns"
+    columns:
+      - name: rental_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

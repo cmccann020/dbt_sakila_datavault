@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_store
+    description: "This is the staging model for the store table. It will perform tests and rename columns"
+    columns:
+      - name: store_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: store_hash_key
+        description: "This is the computed hash key based on the source column STORE_ID"
+        tests:
+          - not_null
+          - unique

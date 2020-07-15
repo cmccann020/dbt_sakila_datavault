@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_payment
+    description: "This is the staging model for the payment table. It will perform tests and rename columns"
+    columns:
+      - name: payment_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
