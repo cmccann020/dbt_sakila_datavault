@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: Sakila
+    database: DBT_CMCCANN
+    description: This is the source data from sakila. I've loaded csv files into an S3 bucket and used that to then stage the files to a snowflake database
+    tables: 
+      - name: actor
+      - name: address
+      - name: category
+      - name: city
+      - name: country
+      - name: customer
+      - name: film
+      - name: inventory
+      - name: language
+      - name: payment
+      - name: rental
+      - name: store
+      - name: staff
