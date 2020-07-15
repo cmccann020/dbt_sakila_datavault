@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_film
+    description: "This is the staging model for the film table. It will perform tests and rename columns"
+    columns:
+      - name: film_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: "This is the title of the film"
+        tests:
+          - not_null
+      - name: description
+        description: "Description of the film - long form text"
+        tests:
+          - not_null
+      - name: language_id
+        description: "Foreign key relation to the language model"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('stg_language')
+                field: language_id
+      - name: film_hash_key
+        description: "This is the computed hash key based on the column TITLE and RELEASE_YEAR"
+        tests:
+          - not_null
+          - unique

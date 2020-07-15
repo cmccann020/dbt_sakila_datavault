@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: stg_country
+    description: '{{ doc("doc_stg_country") }}'
+    columns:
+      - name: country_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: "This is the first name of the actor"
+        tests:
+          - not_null
+      - name: country_hash_key
+        description: "This is the computed hash key based on the column COUNTRY"
+        tests:
+          - not_null
+          - unique
