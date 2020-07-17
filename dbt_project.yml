@@ -3,7 +3,7 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'sakila_datavault'
-version: '2'
+version: '1.0.0'
 config-version: 1
 
 # This setting configures which "profile" dbt uses for this project.
