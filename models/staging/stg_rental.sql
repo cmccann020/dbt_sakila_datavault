@@ -1,6 +1,6 @@
 with rental as (
 
-    select * from {{ ref('snapshot_rental') }}
+    select * from {{ source('Sakila','rental') }}
 
 )
 ,
@@ -12,10 +12,8 @@ final as (
         CUSTOMER_ID,
         RETURN_DATE,
         STAFF_ID,
-        DBT_SCD_ID AS DBT_Incremental_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM rental
-    WHERE DBT_VALID_TO IS NULL
 )
 
 select * from final

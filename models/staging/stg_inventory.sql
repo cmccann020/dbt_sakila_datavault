@@ -1,6 +1,6 @@
 with inventory as (
 
-    select * from {{ ref('snapshot_inventory') }}
+    select * from {{ source('Sakila','inventory') }}
 
 )
 ,
@@ -9,10 +9,8 @@ final as (
         INVENTORY_ID,
         FILM_ID,
         STORE_ID,
-        DBT_SCD_ID AS DBT_INCREMENTAL_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM inventory
-    WHERE DBT_VALID_TO IS NULL
 )
 
 select * from final

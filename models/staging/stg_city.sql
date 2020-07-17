@@ -1,11 +1,13 @@
 with city as (
 
-    select * from {{ ref('snapshot_city') }}
+    select * from {{ source('Sakila','city') }}
 
 )
 ,
 country as (
-    select * from {{ ref('snapshot_country') }}
+
+    select * from {{ source('Sakila','country') }}
+
 )
 ,
 final as (
@@ -14,12 +16,10 @@ final as (
         CITY_ID,
         CITY AS CITY_NAME,
         country.COUNTRY as COUNTRY_NAME,
-        city.DBT_SCD_ID AS DBT_Incremental_ID,
-        city.DBT_UPDATED_AT
+        city.LAST_UPDATE
     FROM city
     LEFT JOIN country
         ON city.COUNTRY_ID=country.COUNTRY_ID
-    WHERE city.DBT_VALID_TO IS NULL
 )
 
 SELECT * FROM final

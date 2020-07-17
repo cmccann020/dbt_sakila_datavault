@@ -1,6 +1,6 @@
 with address as (
 
-    select * from {{ ref('snapshot_address') }}
+    select * from {{ source('Sakila','address') }}
 
 )
 ,
@@ -14,10 +14,8 @@ final as(
         CITY_ID,
         POSTAL_CODE,
         NULLIF(PHONE,'" "') AS Phone_Number,
-        DBT_SCD_ID AS DBT_Incremental_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM address
-    WHERE DBT_VALID_TO IS NULL
     )
 
 SELECT * FROM final

@@ -1,6 +1,6 @@
 with film_category as (
 
-    select * from {{ source('DBT_CMCCANN','film_category') }}
+    select * from {{ source('Sakila','film_category') }}
 
 )
 ,
