@@ -1,6 +1,6 @@
 with store as (
 
-    select * from {{ source('Sakila','store') }}
+    select * from {{ ref('snapshot_store') }}
 
 )
 ,
@@ -11,7 +11,9 @@ final as (
         STORE_ID,
         MANAGER_STAFF_ID,
         ADDRESS_ID,
-        LAST_UPDATE
+        DBT_UPDATED_AT AS LOAD_DATE,
+        DBT_VALID_FROM AS VALID_FROM,
+        DBT_VALID_TO AS VALID_TO
     FROM store
     
 )

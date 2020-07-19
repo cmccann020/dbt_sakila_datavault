@@ -1,6 +1,6 @@
 with film as (
 
-    select * from {{ source('Sakila','film') }}
+    select * from {{ ref('snapshot_film') }}
 
 )
 ,
@@ -19,7 +19,9 @@ final as (
         REPLACEMENT_COST AS FILM_REPLACEMENT_COST,
         RATING AS FILM_RATING,
         SPECIAL_FEATURES AS FILM_SPECIAL_FEATURES,
-        LAST_UPDATE
+        DBT_UPDATED_AT AS LOAD_DATE,
+        DBT_VALID_FROM AS VALID_FROM,
+        DBT_VALID_TO AS VALID_TO
     FROM film
 )
 

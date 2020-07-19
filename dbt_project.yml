@@ -38,5 +38,5 @@ models:
 
 ## Can snapshots have yml files as documentation like other models???
 snapshots:
-  sakila_dbt_project:
+  sakila_datavault:
     transient: false

@@ -1,6 +1,6 @@
 with actors as (
 
-    select * from {{ source('Sakila','actor') }}
+    select * from {{ ref('snapshot_actor') }}
 
 ),
 final as (
@@ -9,7 +9,9 @@ final as (
         ACTORID As ACTOR_ID,
         FIRSTNAME AS ACTOR_FIRST_NAME,
         LASTNAME AS ACTOR_LAST_NAME,
-        DATETIME AS LAST_UPDATE
+        DBT_UPDATED_AT AS LOAD_DATE,
+        DBT_VALID_FROM AS VALID_FROM,
+        DBT_VALID_TO AS VALID_TO
     FROM actors
 )
 

@@ -1,6 +1,6 @@
 with language as (
 
-    select * from {{ source('Sakila','language') }}
+    select * from {{ ref('snapshot_language') }}
 
 )
 ,
@@ -11,7 +11,9 @@ final as (
         {{ dbt_utils.surrogate_key(['NAME']) }} AS LANGUAGE_HASH_KEY,
         LANGUAGE_ID,
         TRIM(NAME,'"') AS LANGUAGE_NAME,
-        LAST_UPDATE
+        DBT_UPDATED_AT AS LOAD_DATE,
+        DBT_VALID_FROM AS VALID_FROM,
+        DBT_VALID_TO AS VALID_TO
     FROM language
 )
 
