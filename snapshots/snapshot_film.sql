@@ -5,8 +5,8 @@
       target_schema='snapshot',
       unique_key='FILM_ID',
 
-      strategy='timestamp',
-      updated_at='LAST_UPDATE',
+      strategy='check',
+      check_cols=['TITLE','DESCRIPTION'],
     )
 }}
 
