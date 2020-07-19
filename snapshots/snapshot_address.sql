@@ -1,5 +1,15 @@
 {% snapshot snapshot_address %}
 
-    SELECT * FROM {{ source('DBT_CMCCANN','address' )}}
+{{
+    config(
+      target_schema='snapshot',
+      unique_key='ADDRESS_ID',
+
+      strategy='timestamp',
+      updated_at='LAST_UPDATE',
+    )
+}}
+
+    SELECT * FROM {{ source('Sakila','address' )}}
     
 {% endsnapshot %}
