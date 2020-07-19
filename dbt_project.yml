@@ -35,26 +35,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   sakila_datavault:
       # Applies to all files under models/example/
-    stg_customer:
-      vars:
-        source_model: 
-          Sakila: "customer"
-        hashed_columns:
-          CUSTOMER_HASH_KEY: 
-            - "FIRST_NAME"
-            - "LAST_NAME"
-          CUSTOMER_HASHDIFF:
-            is_hashdiff: true
-            columns:
-              - "FIRST_NAME"
-              - "LAST_NAME"
-              - "EMAIL"
-              - "ACTIVE"
-        derived_columns:
-          SOURCE: "!Sakila"
-          EFFECTIVE_FROM: "LAST_UPDATE"
 
-
+## Can snapshots have yml files as documentation like other models???
 snapshots:
   sakila_dbt_project:
     transient: false

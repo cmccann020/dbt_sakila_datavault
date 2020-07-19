@@ -1,6 +1,6 @@
 with payment as (
 
-    select * from {{ ref('snapshot_payment') }}
+    select * from {{ source('Sakila','payment') }}
 
 )
 ,
@@ -12,10 +12,8 @@ final as (
         RENTAL_ID,
         AMOUNT AS PAYMENT_AMOUNT,
         PAYMENT_DATE,
-        DBT_SCD_ID AS DBT_Incremental_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM payment
-    WHERE DBT_VALID_TO IS NULL
 )
 
 select * from final

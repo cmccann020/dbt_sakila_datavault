@@ -1,6 +1,6 @@
 with staff as (
 
-    select * from {{ ref('snapshot_staff') }}
+    select * from {{ source('Sakila','staff') }}
 
 )
 ,
@@ -17,10 +17,8 @@ final as (
         ACTIVE,
         USERNAME AS STAFF_USERNAME,
         PASSWORD AS STAFF_PASSWORD,
-        DBT_SCD_ID AS DBT_Incremental_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM staff
-    WHERE DBT_VALID_TO IS NULL
 )
 
 select * from final

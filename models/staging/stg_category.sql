@@ -1,6 +1,6 @@
 with category as (
 
-    select * from {{ ref('snapshot_category') }}
+    select * from {{ source('Sakila','category') }}
 
 )
 ,
@@ -9,10 +9,8 @@ final as (
         {{ dbt_utils.surrogate_key(['NAME']) }} AS CATEGORY_HASH_KEY,
         CATEGORY_ID,
         NAME AS Category_NAME,
-        DBT_SCD_ID AS DBT_Incremental_ID,
-        DBT_UPDATED_AT
+        LAST_UPDATE
     FROM category
-    WHERE DBT_VALID_TO IS NULL
 )
 
 SELECT * FROM final
