@@ -7,7 +7,7 @@ with address as (
 final as (
 
     select 
-        adress_hash_key,
+        address_hash_key,
         business_key,
         load_date,
         record_source,
