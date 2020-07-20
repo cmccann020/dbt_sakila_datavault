@@ -18,6 +18,7 @@ clean_language as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['LANGUAGE_NAME']) }} AS LANGUAGE_HASH_KEY,
+        LANGUAGE_NAME AS BUSINESS_KEY,
         LANGUAGE_ID,
         LANGUAGE_NAME,
         RECORD_SOURCE,

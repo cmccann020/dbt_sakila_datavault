@@ -7,6 +7,7 @@ with staff as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['EMAIL']) }} AS STAFF_HASH_KEY,
+        EMAIL AS BUSINESS_KEY,
         STAFF_ID,
         FIRST_NAME AS STAFF_FIRST_NAME,
         LAST_NAME AS STAFF_LAST_NAME,

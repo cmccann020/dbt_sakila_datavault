@@ -7,6 +7,7 @@ with film as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['TITLE','RELEASE_YEAR']) }} AS FILM_HASH_KEY,
+        FILM || RELEASE_YEAR AS BUSINESS_KEY,
         FILM_ID,
         TITLE AS FILM_TITLE,
         DESCRIPTION AS FILM_DESCRIPTION,

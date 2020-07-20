@@ -6,6 +6,7 @@ with actors as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['FIRSTNAME', 'LASTNAME']) }} AS ACTOR_HASH_KEY,
+        FIRSTNAME || LASTNAME AS BUSINESS_KEY,
         ACTORID As ACTOR_ID,
         FIRSTNAME AS ACTOR_FIRST_NAME,
         LASTNAME AS ACTOR_LAST_NAME,

@@ -8,6 +8,7 @@ final as (
 
     SELECT 
         {{ dbt_utils.surrogate_key(['COUNTRY']) }} AS COUNTRY_HASH_KEY,
+        COUNTRY AS BUSINESS_KEY,
         COUNTRY_ID,
         COUNTRY AS COUNTRY_NAME,
         '{{ var("sakila_source") }}' as RECORD_SOURCE,

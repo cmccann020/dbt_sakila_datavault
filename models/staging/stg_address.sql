@@ -7,6 +7,7 @@ with address as (
 final as(
     SELECT
         {{ dbt_utils.surrogate_key(['ADDRESS']) }} AS ADDRESS_HASH_KEY,
+        ADDRESS AS BUSINESS_KEY,
         ADDRESS_ID,
         ADDRESS,
         ADDRESS2,

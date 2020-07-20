@@ -7,6 +7,7 @@ with category as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['NAME']) }} AS CATEGORY_HASH_KEY,
+        NAME AS BUSINESS_KEY,
         CATEGORY_ID,
         NAME AS Category_NAME,
         '{{ var("sakila_source") }}' as RECORD_SOURCE,

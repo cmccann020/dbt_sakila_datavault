@@ -7,6 +7,7 @@ with customer as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['EMAIL']) }} AS CUSTOMER_HASH_KEY, 
+        EMAIL AS BUSINESS_KEY,
         CUSTOMER_ID,
         STORE_ID,
         FIRST_NAME as CUSTOMER_FIRST_NAME,

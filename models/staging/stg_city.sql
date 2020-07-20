@@ -13,6 +13,7 @@ country as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['CITY','COUNTRY']) }} AS CITY_HASH_KEY,
+        CITY || COUNTRY AS BUSINESS_KEY,
         CITY_ID,
         CITY AS CITY_NAME,
         country.COUNTRY as COUNTRY_NAME,
