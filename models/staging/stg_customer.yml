@@ -25,7 +25,7 @@ models:
                 to: ref('stg_store')
                 field: store_id
       - name: customer_hash_key
-        description: "This is the computed hash key based on the column FIRST_NAME and LAST_NAME"
+        description: "This is the computed hash key based on the column EMAIL"
         tests:
           - not_null
           - unique

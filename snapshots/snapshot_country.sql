@@ -1,5 +1,15 @@
 {% snapshot snapshot_country %}
 
-    SELECT * FROM {{ source('DBT_CMCCANN','country' )}}
+{{
+    config(
+      target_schema='snapshot',
+      unique_key='COUNTRY_ID',
+
+      strategy='timestamp',
+      updated_at='LAST_UPDATE',
+    )
+}}
+
+    SELECT * FROM {{ source('Sakila','country' )}}
 
 {% endsnapshot %}

@@ -10,7 +10,7 @@ models:
           - unique
           - not_null
       - name: staff_hash_key
-        description: "This is the computed hash key based on the source column FIRSTNAME and LASTNAME"
+        description: "This is the computed hash key based on the source column EMAIL"
         tests:
           - not_null
           - unique

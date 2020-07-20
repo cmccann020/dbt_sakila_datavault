@@ -1,5 +1,15 @@
 {% snapshot snapshot_film %}
 
-    SELECT * FROM {{ source('DBT_CMCCANN','film') }}
+{{
+    config(
+      target_schema='snapshot',
+      unique_key='FILM_ID',
+
+      strategy='check',
+      check_cols=['TITLE','DESCRIPTION'],
+    )
+}}
+
+    SELECT * FROM {{ source('Sakila','film') }}
     
 {% endsnapshot %}

@@ -1,12 +1,13 @@
 with film as (
 
-    select * from {{ source('Sakila','film') }}
+    select * from {{ ref('snapshot_film') }}
 
 )
 ,
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['TITLE','RELEASE_YEAR']) }} AS FILM_HASH_KEY,
+        TITLE || RELEASE_YEAR AS BUSINESS_KEY,
         FILM_ID,
         TITLE AS FILM_TITLE,
         DESCRIPTION AS FILM_DESCRIPTION,
@@ -19,7 +20,10 @@ final as (
         REPLACEMENT_COST AS FILM_REPLACEMENT_COST,
         RATING AS FILM_RATING,
         SPECIAL_FEATURES AS FILM_SPECIAL_FEATURES,
-        LAST_UPDATE
+        '{{ var("sakila_source") }}' as RECORD_SOURCE,
+        DBT_VALID_FROM AS LOAD_DATE,
+        DBT_VALID_TO AS LOAD_END_DATE,
+        DATEDIFF(day,DBT_VALID_FROM,CURRENT_TIMESTAMP()) AS LAST_SEEN
     FROM film
 )
 
