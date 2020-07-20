@@ -16,9 +16,10 @@ final as (
         CITY_ID,
         CITY AS CITY_NAME,
         country.COUNTRY as COUNTRY_NAME,
-        city.DBT_UPDATED_AT AS LOAD_DATE,
-        city.DBT_VALID_FROM AS VALID_FROM,
-        city.DBT_VALID_TO AS VALID_TO
+        '{{ var("sakila_source") }}' as RECORD_SOURCE,
+        DBT_VALID_FROM AS LOAD_DATE,
+        DBT_VALID_TO AS LOAD_END_DATE,
+        DATEDIFF(day,DBT_VALID_FROM,CURRENT_TIMESTAMP()) AS LAST_SEEN
     FROM city
     LEFT JOIN country
         ON city.COUNTRY_ID=country.COUNTRY_ID
