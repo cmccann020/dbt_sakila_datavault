@@ -7,6 +7,7 @@ with inventory as (
 final as (
     SELECT
         {{ dbt_utils.surrogate_key(['INVENTORY_ID']) }} AS INVENTORY_HASH_KEY,
+        INVENTORY_ID AS BUSINESS_KEY,
         INVENTORY_ID,
         FILM_ID,
         STORE_ID,
