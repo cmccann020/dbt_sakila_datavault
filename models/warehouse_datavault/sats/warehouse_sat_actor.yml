@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: warehouse_sat_actor
+    description: "This is a satellite table for the actor hub."
+    columns:
+      - name: load_date
+        description: "The date the data was loaded into the dwh"
+        tests:
+          - not_null
+      - name: record_source
+        description: "The source system that the data came from"
+        tests:
+          - not_null
+      - name: actor_hash_key
+        description: "This is the hash key matching to the actor hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_actor')
+                field: actor_hash_key
