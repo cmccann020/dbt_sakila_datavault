@@ -1,0 +1,27 @@
+version: 2
+models:
+  - name: warehouse_link_staff_address
+    description: "This is the link table that describes the relationship of staff and address."
+    columns:
+      - name: load_date
+        description: "The date the data was loaded into the dwh"
+        tests:
+          - not_null
+      - name: record_source
+        description: "The source system that the data came from"
+        tests:
+          - not_null
+      - name: staff_hash_key
+        description: "This is the hash key matching to the staff hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_staff')
+                field: staff_hash_key
+      - name: address_hash_key
+        description: "This is the hash key matching to the address hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_address')
+                field: address_hash_key

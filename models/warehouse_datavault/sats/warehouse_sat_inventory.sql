@@ -1,19 +1,19 @@
-with store as (
+with inventory as (
 
-    select * from {{ ref('stg_store') }}
+    select * from {{ ref('stg_inventory') }}
 
 )
 ,
 final as (
 
     select
-        store_hash_key,
+        inventory_hash_key,
         load_date,
         load_end_date,
         record_source,
         last_seen,
-        store_id
-    from store
+        inventory_id
+    from inventory
 )
 
 select * from final

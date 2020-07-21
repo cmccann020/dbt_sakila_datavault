@@ -1,0 +1,34 @@
+version: 2
+models:
+  - name: warehouse_link_inventory_film_store
+    description: "This is the link table that describes the relationship of inventory, film, and store."
+    columns:
+      - name: load_date
+        description: "The date the data was loaded into the dwh"
+        tests:
+          - not_null
+      - name: record_source
+        description: "The source system that the data came from"
+        tests:
+          - not_null
+      - name: film_hash_key
+        description: "This is the hash key matching to the film hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_film')
+                field: film_hash_key
+      - name: store_hash_key
+        description: "This is the hash key matching to the store hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_store')
+                field: store_hash_key
+      - name: inventory_hash_key
+        description: "This is the hash key matching to the inventory hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_inventory')
+                field: inventory_hash_key

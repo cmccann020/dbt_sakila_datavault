@@ -1,19 +1,19 @@
-with store as (
+with language as (
 
-    select * from {{ ref('stg_store') }}
+    select * from {{ ref('stg_language') }}
 
 )
 ,
 final as (
 
     select
-        store_hash_key,
+        language_hash_key,
         load_date,
         load_end_date,
         record_source,
         last_seen,
-        store_id
-    from store
+        language_name
+    from language
 )
 
 select * from final

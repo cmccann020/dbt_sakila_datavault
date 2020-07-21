@@ -1,19 +1,20 @@
-with store as (
+with city as (
 
-    select * from {{ ref('stg_store') }}
+    select * from {{ ref('stg_city') }}
 
 )
 ,
 final as (
 
     select
-        store_hash_key,
+        city_hash_key,
         load_date,
         load_end_date,
         record_source,
         last_seen,
-        store_id
-    from store
+        city_name,
+        country_name
+    from city
 )
 
 select * from final

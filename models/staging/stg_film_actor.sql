@@ -10,7 +10,8 @@ final as (
         {{ dbt_utils.surrogate_key(['FILM_ID','ACTOR_ID']) }} AS FILM_ACTOR_HASH_KEY,
         FILM_ID,
         ACTOR_ID,
-        LAST_UPDATE
+        LAST_UPDATE as LOAD_DATE,
+        '{{ var("sakila_source") }}' as RECORD_SOURCE
     FROM film_actor
     
 )

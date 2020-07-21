@@ -1,7 +1,7 @@
 version: 2
 models:
-  - name: warehouse_sat_film
-    description: "This is a satellite table for the film hub. Next sprint break out the film rental information into its own satellite"
+  - name: warehouse_link_film_actor
+    description: "This is the link table that describes the relationship of film and actor."
     columns:
       - name: load_date
         description: "The date the data was loaded into the dwh"
@@ -18,3 +18,10 @@ models:
           - relationships:
                 to: ref('warehouse_hub_film')
                 field: film_hash_key
+      - name: actor_hash_key
+        description: "This is the hash key matching to the actor hub"
+        tests:
+          - not_null
+          - relationships:
+                to: ref('warehouse_hub_actor')
+                field: actor_hash_key

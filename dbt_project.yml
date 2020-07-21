@@ -33,6 +33,12 @@ models:
       hubs:
         materialized: table
         transient: 'true'
+      sats:
+        materialized: table
+        transient: 'true'
+      links:
+        materialized: table
+        transient: 'true'
     staging:
         materialized: view
       # Applies to all files under models/example/

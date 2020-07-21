@@ -1,19 +1,19 @@
-with store as (
+with staff as (
 
-    select * from {{ ref('stg_store') }}
+    select * from {{ ref('stg_staff') }}
 
 )
 ,
 final as (
 
     select
-        store_hash_key,
+        staff_hash_key,
         load_date,
         load_end_date,
         record_source,
         last_seen,
-        store_id
-    from store
+        picture
+    from staff
 )
 
 select * from final
