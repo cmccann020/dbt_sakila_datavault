@@ -13,7 +13,8 @@ final as (
         record_source,
         last_seen,
         actor_first_name,
-        actor_last_name
+        actor_last_name,
+        breaking_column
     from actor
 
 )
