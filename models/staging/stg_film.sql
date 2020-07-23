@@ -25,6 +25,7 @@ final as (
         DBT_VALID_TO AS LOAD_END_DATE,
         DATEDIFF(day,DBT_VALID_FROM,CURRENT_TIMESTAMP()) AS LAST_SEEN
     FROM film
+    order by title, release_year
 )
 
 select * from final

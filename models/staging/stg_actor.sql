@@ -15,6 +15,7 @@ final as (
         DBT_VALID_TO AS LOAD_END_DATE,
         DATEDIFF(day,DBT_VALID_FROM,CURRENT_TIMESTAMP()) AS LAST_SEEN
     FROM actors
+    order by FIRSTNAME,LASTNAME
 )
 
 SELECT * FROM final

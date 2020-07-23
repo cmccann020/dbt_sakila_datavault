@@ -26,6 +26,7 @@ final as (
         LOAD_END_DATE,
         LAST_SEEN
     FROM clean_language
+    order by language_name
 )
 
 select * from final
