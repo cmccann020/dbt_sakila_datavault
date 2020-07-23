@@ -13,6 +13,7 @@ final as (
         LAST_UPDATE as LOAD_DATE,
         '{{ var("sakila_source") }}' as RECORD_SOURCE
     FROM film_category
+    order by film_id, category_id
     
 )
 

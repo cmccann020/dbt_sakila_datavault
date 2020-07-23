@@ -23,6 +23,7 @@ final as (
         DBT_VALID_TO AS LOAD_END_DATE,
         DATEDIFF(day,DBT_VALID_FROM,CURRENT_TIMESTAMP()) AS LAST_SEEN
     FROM staff
+    order by email
 )
 
 select * from final

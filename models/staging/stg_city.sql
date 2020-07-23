@@ -24,6 +24,7 @@ final as (
     FROM city
     LEFT JOIN country
         ON city.COUNTRY_ID=country.COUNTRY_ID
+    order by city, country
 )
 
 SELECT * FROM final
