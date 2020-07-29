@@ -21,7 +21,8 @@ final as (
     select
         inventory_hash_key,
         store_hash_key,
-        film_hash_key
+        film_hash_key,
+        {{ dbt_utils.star(from=ref('stg_inventory'), except=["INVENTORY_HASH_KEY","STORE_ID","FILM_ID"], relation_alias = "inventory") }}
     from inventory
 
     left join store

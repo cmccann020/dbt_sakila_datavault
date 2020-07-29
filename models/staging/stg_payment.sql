@@ -6,6 +6,7 @@ with payment as (
 ,
 final as (
     SELECT
+        {{ dbt_utils.surrogate_key(['PAYMENT_ID','CUSTOMER_ID','STAFF_ID','RENTAL_ID']) }} AS PAYMENT_HASH_KEY,
         PAYMENT_ID,
         CUSTOMER_ID,
         STAFF_ID,
