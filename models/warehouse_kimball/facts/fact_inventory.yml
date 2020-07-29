@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fact_inventory
+    description: "This is the inventory fact."
+    columns:
+      - name: inventory_hash_key
+        description: "The primary key of inventory."
+        tests:
+          - not_null
+      - name: LOAD_DATE
+        description: "The date the data was loaded into the dwh"
+        tests:
+          - not_null
+      - name: RECORD_SOURCE
+        description: "The source system that the data came from"
+        tests:
+          - not_null
+      - name: CUSTOMER_HASH_KEY
+        description: "This is the hash primary key for the customer dimension"
+        tests:
+          - not_null
+      - name: store_hash_key
+        description: "The primary key of store."
+        tests:
+          - not_null
+      - name: film_hash_key
+        description: "The primary key of film."
+        tests:
+          - not_null
