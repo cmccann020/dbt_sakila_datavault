@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dim_film
+    description: "This is the film dimension. It is the film staging table joined with language to include language information"
+    columns:
+      - name: language_name
+        description: "Where the film language is. Confirming that it is not null."
+        tests:
+          - not_null

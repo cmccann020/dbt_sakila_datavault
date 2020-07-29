@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dim_store
+    description: "This is the store dimension. It is the store staging table joined with address to include address information"
+    columns:
+      - name: address
+        description: "Where the store resides. Confirming that it is not null."
+        tests:
+          - not_null
