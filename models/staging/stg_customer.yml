@@ -12,8 +12,9 @@ models:
       - name: first_name
         description: "This is the first name of the customer"
         tests:
-          - not_null
-      - name: last_name
+          - not_null:
+              severity: warn
+      - name: customer_last_name
         description: "This is the last name of the customer"
         tests:
           - not_null
