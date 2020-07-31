@@ -1,0 +1,7 @@
+{
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "git.autofetch": true,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "git.confirmSync": false,
+    "python.pythonPath": "C:\\python-environments\\testing_env"
+}
