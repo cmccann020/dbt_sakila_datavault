@@ -7,6 +7,7 @@ sources:
     description: This is the source data from sakila. I've loaded csv files into an S3 bucket and used that to then stage the files to a snowflake database
     tables: 
       - name: actor
+        description: "This is the source table for actor information. We are pulling this data from Sakila"
       - name: address
       - name: category
       - name: city

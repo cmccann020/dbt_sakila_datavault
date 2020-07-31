@@ -25,3 +25,4 @@ final as (
 )
 
 SELECT * FROM final
+where customer_email is null

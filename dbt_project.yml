@@ -41,6 +41,8 @@ models:
         transient: 'true'
     staging:
         materialized: view
+    warehouse_kimball:
+        materialized: table
       # Applies to all files under models/example/
 
 ## Can snapshots have yml files as documentation like other models???
