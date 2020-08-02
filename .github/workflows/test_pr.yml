@@ -1,9 +1,15 @@
 name: testing push to master
 
-on:
-  push:
-    branches:
-      - master
+on: pull_request
+
+env:
+  DBT_PROFILE_TARGET:            test
+  DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
+  DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
+  DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
+  DBT_PROFILE_ROLE:              A8_USER
+  DBT_PROFILE_DB:                DBT_DATAVAULT_TEST
+  DBT_PROFILE_WH:                TRAINING_WH
 
 jobs:
   prod:
@@ -16,7 +22,7 @@ jobs:
     - name: Install Python Latest
       uses: actions/setup-python@v1
       with:
-        python-version: python-latest
+        python-version: 3.8
       
     - name: Install dbt
       run: |
@@ -25,5 +31,6 @@ jobs:
       
     - name: Deploy
       run: |
+        export DBT_PROFILE_SCHEMA=pr_$(date +%s)
         dbt run --profiles-dir ./ci_profiles
         dbt test --profiles-dir ./ci_profiles
