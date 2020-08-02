@@ -14,9 +14,9 @@ my-snowflake-db:
       role:      "{{ env_var('DBT_PROFILE_ROLE') }}"
       database:  "{{ env_var('DBT_PROFILE_DB') }}"
       warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
-      schema:    "{{ env_var('DBT_PROFILE_SCHEMA') }}"
+      schema:    "{{ env_var('DBT_PROFILE_TESTING_SCHEMA') }}"
 
-      threads: 8
+      threads: 1
       client_session_keep_alive: False
 
     prod:
@@ -28,7 +28,7 @@ my-snowflake-db:
       role:      "{{ env_var('DBT_PROFILE_ROLE') }}"
       database:  "{{ env_var('DBT_PROFILE_DB') }}"
       warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
-      schema:    "{{ env_var('DBT_PROFILE_SCHEMA') }}"
+      schema:    "{{ env_var('DBT_PROFILE_PROD_SCHEMA') }}"
 
-      threads: 8
+      threads: 1
       client_session_keep_alive: False

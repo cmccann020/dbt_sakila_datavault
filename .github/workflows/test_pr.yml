@@ -3,7 +3,7 @@ name: testing push to master based on pull request
 on: pull_request
 
 env:
-  DBT_PROFILE_TARGET:            test
+  DBT_PROFILE_TARGET:            dev
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
