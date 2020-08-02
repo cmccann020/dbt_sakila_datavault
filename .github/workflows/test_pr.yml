@@ -1,6 +1,9 @@
 name: testing push to master
 
-on: pull_request
+on: 
+  push:
+    branches:
+      - master
 
 env:
   DBT_PROFILE_TARGET:            test
