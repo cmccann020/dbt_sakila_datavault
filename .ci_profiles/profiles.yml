@@ -1,7 +1,7 @@
 # For more information on how to configure this file, please see:
 # https://docs.getdbt.com/docs/profile
 
-dbt_ci_cd:
+my-snowflake-db:
   target: "{{ env_var('DBT_PROFILE_TARGET') }}"
 
   outputs: # test and prod are identical (except for schema), but their target names has significance in different build stages
