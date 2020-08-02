@@ -1,9 +1,12 @@
-name: testing push to master based on pull request
+name: Production deployment from master
 
-on: pull_request
+on: 
+  push:
+    branches:
+      - master
 
 env:
-  DBT_PROFILE_TARGET:            test
+  DBT_PROFILE_TARGET:            prod
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
@@ -19,18 +22,16 @@ jobs:
     - name: Checkout branch
       uses: actions/checkout@v2
 
-    - name: Install Python Latest
+    - name: Install Python 3.7
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
-      
-    - name: Install dbt
+        python-version: 3.7
+
+    - name: Install DBT
       run: |
         python -m pip install --upgrade pip
         pip install dbt
-      
     - name: Deploy
       run: |
-        export DBT_PROFILE_SCHEMA=pr_$(date +%s)
         dbt run --profiles-dir ./ci_profiles
         dbt test --profiles-dir ./ci_profiles
