@@ -30,7 +30,7 @@ vars:
 models:
   sakila_datavault:
     warehouse_datavault:
-      schema: warehouse
+      schema: warehouse-datavault
       hubs:
         materialized: table
         transient: 'true'
@@ -45,7 +45,7 @@ models:
         schema: staging
     warehouse_kimball:
         materialized: table
-        schema: warehouse
+        schema: warehouse-kimball
       # Applies to all files under models/example/
 
 ## Can snapshots have yml files as documentation like other models???
