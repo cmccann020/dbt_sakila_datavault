@@ -29,17 +29,6 @@ vars:
 
 models:
   sakila_datavault:
-    warehouse_datavault:
-      schema: warehouse-datavault
-      hubs:
-        materialized: table
-        transient: 'true'
-      sats:
-        materialized: table
-        transient: 'true'
-      links:
-        materialized: table
-        transient: 'true'
     staging:
         materialized: view
         schema: staging
